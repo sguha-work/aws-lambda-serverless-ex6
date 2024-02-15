@@ -27,18 +27,12 @@ provider:
     USERS_TABLE: ${self:custom.tableName}
 
 functions:
+  - ${file(src/aws-resources/lambda/functions.yml)}
   # api:
   #   handler: index.handler
   #   events:
   #     - httpApi: '*'
-  getUsers:
-    handler: index.handler
-    events:
-      - http:
-          path: /users/{userId}/
-          method: get
-          cors: true
-          #documentation: ${file(src/spec/models/serverless.doc.yml):endpoints.fetchAllAuctions}
+  
 
 resources:
   Resources:

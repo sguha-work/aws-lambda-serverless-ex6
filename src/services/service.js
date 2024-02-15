@@ -1,19 +1,19 @@
 import DBService from "./db.service.js";
 import model from "../models/model.js";
-class Service {
-    #dynamoDbClient = (new DBService()).dynamoDbClient;
-    async get({ id = null, page, limit }) {
+class ServiceClass {
+    #dynamoDbClient = DBService.dynamoDbClient;
+    async get({ productId = null, page, limit }) {
         let response = {
             status: 200,
             data: [],
             error: null
         };
         try {
-            if (id != null) {
+            if (productId != null) {
                 const params = {
-                    TableName: USERS_TABLE,
+                    TableName: "PRODUCT_TABLE",
                     Key: {
-                        userId: id,
+                        productId,
                     },
                 };
                 const { Item } = await this.#dynamoDbClient.send(new GetCommand(params));
@@ -22,7 +22,7 @@ class Service {
                     response.data.push({ userId, name });
                 } else {
                     response.status = 404;
-                    response.error = { error: 'Could not find user with provided "userId"' };
+                    response.error = { error: 'Could not find product with provided "productId"' };
                 }
             }
             return Promise.resolve(response);
@@ -69,4 +69,5 @@ class Service {
     //     }
     // }
 }
+const Service = new ServiceClass();
 export default Service;

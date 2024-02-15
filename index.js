@@ -6,8 +6,8 @@ import * as serverless from "serverless-http";
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import Router from './router/router.js';
-import Logger from './handlers/logger.handler.js';
+import Router from './src/router/router.js';
+import Logger from './src/handlers/logger.handler.js';
 
 const app = express();
 

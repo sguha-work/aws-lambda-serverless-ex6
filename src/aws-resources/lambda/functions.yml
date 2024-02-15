@@ -1,0 +1,91 @@
+getProductById:
+    handler: index.handler
+    events:
+      - http:
+          path: /products/{productId}/
+          method: get
+          cors: true
+          #documentation: ${file(src/spec/models/serverless.doc.yml):endpoints.fetchAllAuctions}
+# userSignup:
+#   handler: build/index.handler
+#   iamRoleStatementsName: vw-user-${self:provider.stage}-signup-lambda-role
+#   iamRoleStatements:
+#     - Effect: "Allow"
+#       Action:
+#         - cognito-idp:AdminCreateUser
+#         - cognito-idp:AdminAddUserToGroup
+#       Resource: 
+#         Fn::GetAtt: [CognitoUserPool, Arn]
+#       # !Sub arn:aws:cognito-idp:${AWS::Region}:${AWS::AccountId}:userpool/*
+#   events:
+#     - http:
+#         path: users/signup
+#         method: post
+#         cors: true
+
+# validateOTP:
+#   handler: build/index.handler
+#   iamRoleStatementsName: vw-user-${self:provider.stage}-valiadteotp-lambda-role
+#   iamRoleStatements:
+#     - Effect: "Allow"
+#       Action:
+#         - cognito-idp:AdminInitiateAuth
+#         - cognito-idp:AdminUpdateUserAttributes
+#       Resource: 
+#         Fn::GetAtt: [CognitoUserPool, Arn]
+#       # !Sub arn:aws:cognito-idp:${AWS::Region}:${AWS::AccountId}:userpool/*
+#   events:
+#     - http:
+#         path: users/{userId}/validate-otp
+#         method: post
+#         cors: true
+
+# userSetNewPassword:
+#   handler: build/index.handler
+#   iamRoleStatementsName: vw-user-${self:provider.stage}-set-new-password-lambda-role
+#   iamRoleStatements:
+#     - Effect: "Allow"
+#       Action:
+#         - cognito-idp:AdminRespondToAuthChallenge
+#       Resource: 
+#         Fn::GetAtt: [CognitoUserPool, Arn]
+#       # !Sub arn:aws:cognito-idp:${AWS::Region}:${AWS::AccountId}:userpool/*
+#   events:
+#     - http:
+#         path: users/{userId}/password
+#         method: patch
+#         cors: true
+
+# userLogin:
+#   handler: build/index.handler
+#   iamRoleStatementsName: vw-user-${self:provider.stage}-login-lambda-role
+#   iamRoleStatements:
+#     - Effect: "Allow"
+#       Action:
+#         - cognito-idp:AdminInitiateAuth
+#         - cognito-idp:AdminUpdateUserAttributes
+#       Resource: 
+#         Fn::GetAtt: [CognitoUserPool, Arn]
+#       #!Sub arn:aws:cognito-idp:${AWS::Region}:${AWS::AccountId}:userpool/*
+#   events:
+#     - http:
+#         path: users/login
+#         method: post
+#         cors: true
+
+# userRefreshToken:
+#   handler: build/index.handler
+#   iamRoleStatementsName: vw-user-${self:provider.stage}-refresh-token-lambda-role
+#   iamRoleStatements:
+#     - Effect: "Allow"
+#       Action:
+#         - cognito-idp:initiateAuth
+#       Resource: 
+#         Fn::GetAtt: [CognitoUserPool, Arn]
+#       # !Sub arn:aws:cognito-idp:${AWS::Region}:${AWS::AccountId}:userpool/*
+#   events:
+#     - http:
+#         path: users/{userId}/refresh-token
+#         method: post
+#         cors: true
+

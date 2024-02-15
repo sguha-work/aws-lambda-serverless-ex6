@@ -1,0 +1,116 @@
+openapi: 3.0.1
+info:
+  title: 'VW User management API'
+  description: This API Spec is for User User Micro-service.
+  version: 1.0.0
+paths:
+  # '/patients':
+  #   post:
+  #     operationId: createPatient
+  #     summary: Api for new patient registration.
+  #     description: Creates a new patient.
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref:  '#/components/schemas/createPatientRequestModel'
+  #       description: Request payload structure to create patient
+  #     responses:
+  #       '201':
+  #         description: New User created in cognito & entry made in the DB.
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/createPatientResponseModel'
+
+  '/products/{productId}':
+    get:
+      operationId: getProductById
+      summary: Api to fetch product details by id.
+      description: Api to fetch product details by id.
+      parameters:
+        - in: path
+          name: productId
+          schema:
+            type: string
+          required: true
+          description: Product id to get details
+      responses:
+        '200':
+          description: Product details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getProductByIdResponseModel'
+    # put:
+    #   operationId: updatePatient
+    #   summary: Api to update patient details.
+    #   description: Api to update patient details.
+    #   requestBody:
+    #     content:
+    #       application/json:
+    #         schema:
+    #           $ref:  '#/components/schemas/updatePatientRequestModel'
+    #     description: Request payload structure to validate OTP
+    #   parameters:
+    #     - in: path
+    #       name: patientID
+    #       schema:
+    #         type: string
+    #       required: true
+    #       description: Patient id to update details
+    #   responses:
+    #     '200':
+    #       description: New treatment entry created in db.
+    #       content:
+    #         application/json:
+    #           schema:
+    #             $ref: '#/components/schemas/updatePatientResponseModel'
+    # delete:
+    #   operationId: deletePatientById
+    #   summary: Api to fetch patient details by id.
+    #   description: Api to fetch patient details by id.
+    #   parameters:
+    #     - in: path
+    #       name: patientID
+    #       schema:
+    #         type: string
+    #       required: true
+    #       description: Patient id to get details
+    #   responses:
+    #     '202':
+    #       description: deleted patient.
+
+
+    
+components:
+  schemas:
+    
+    getProductByIdResponseModel:
+      properties:      
+        statusCode: 
+          type: integer
+          format: int32
+          example: 201
+        message: 
+          type: string
+        data: 
+          type: object
+          properties: 
+            firstName: 
+              type: string
+            lastName: 
+              type: string
+            gender: 
+              type: string
+            dob: 
+              type: string
+              format: nullable
+            _id: 
+              type: string
+            createdAt: 
+              type: string
+              format: date-time
+            updatedAt: 
+              type: string
+              format: date-time

@@ -6,7 +6,7 @@ import {
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 //const USERS_TABLE = process.env.USERS_TABLE;
 
-class DBService {
+class DB {
     dynamoDbClient = null;
     constructor() {
         const client = new DynamoDBClient();
@@ -141,4 +141,5 @@ class DBService {
 
 
 }
+const DBService = new DB();
 export default DBService;
