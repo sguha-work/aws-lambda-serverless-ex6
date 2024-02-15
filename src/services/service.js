@@ -1,5 +1,4 @@
 import DBService from "./db.service.js";
-import model from "../models/model.js";
 class ServiceClass {
     #dynamoDbClient = DBService.dynamoDbClient;
     async get({ productId = null, page, limit }) {
